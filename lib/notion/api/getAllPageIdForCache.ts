@@ -4,12 +4,24 @@ import { notion_api } from "@/lib/notion/api/notion";
 import { CollectionQueryResult } from "notion-types";
 import { getTextContent, idToUuid } from "notion-utils";
 
+type NotionBlockMap = Record<
+  string,
+  {
+    value?: {
+      type?: string;
+      properties?: Record<string, unknown>;
+      collection_id?: string;
+      view_ids?: string[];
+    };
+  }
+>;
+
 export async function getAllPageIdForCache(
   databasePageId: string
 ): Promise<string[]> {
   const uuidedPageId = idToUuid(databasePageId);
   const recordMap = await notion_api.getPage(databasePageId);
-  const blockMap = recordMap.block || {};
+  const blockMap = (recordMap.block || {}) as NotionBlockMap;
   const rootBlock = blockMap[uuidedPageId]?.value;
 
   if (!rootBlock) {
@@ -43,14 +55,14 @@ export async function getAllPageIdForCache(
   return [...pageSet];
 }
 
-function setOnlyPageTypeBlockMap(blockMap, pageSet) {
+function setOnlyPageTypeBlockMap(blockMap: NotionBlockMap, pageSet: Set<string>) {
   Object.entries(blockMap).forEach(([id, block]) => {
-    const value = (block as any).value;
+    const value = block.value;
     if (value?.type !== "page") return;
 
-    const properties = value.properties || {};
+    const properties = (value.properties || {}) as Record<string, unknown>;
     const statusRaw = properties["status"] || properties["Status"];
-    const status = getTextContent(statusRaw);
+    const status = getTextContent(statusRaw as any);
 
     if (status?.toLowerCase() === "published") {
       pageSet.add(id);
@@ -58,7 +70,12 @@ function setOnlyPageTypeBlockMap(blockMap, pageSet) {
   });
 }
 
-function setAllBlockMap(viewIds, collectionQuery, collectionId, pageSet) {
+function setAllBlockMap(
+  viewIds: string[],
+  collectionQuery: Record<string, any>,
+  collectionId: string,
+  pageSet: Set<string>
+) {
   // First attempt: preferred View's blockIds
   for (const viewId of viewIds) {
     const viewQuery: CollectionQueryResult =

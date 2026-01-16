@@ -1,7 +1,6 @@
-"use server";
-
 import { BLOG } from "@/blog.config";
 import { getARecordPageById } from "@/lib/notion/controller";
+import { getStaticPageParams } from "@/lib/notion/api/getStaticPageParams";
 
 import SingleRecords from "@/modules/blog/records/SingleRecords";
 import ErrorComponent from "@/modules/common/components/shared/ErrorComponent";
@@ -10,16 +9,20 @@ import GeneralRecordTypePageWrapper from "@/modules/layout/templates/GeneralReco
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export async function generateStaticParams() {
-  const records = [{ pageId: "1481eb5c-0337-8087-a304-f2af3275be11" }];
+// NOTE: Next.js requires a static number literal here.
+export const revalidate = 300;
+export const dynamicParams = true;
 
-  return records.map((record) => ({
-    pageId: record.pageId,
-  }));
+export async function generateStaticParams() {
+  return await getStaticPageParams();
 }
 
-export async function generateMetadata({ params }): Promise<Metadata> {
-  const { pageId } = params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ pageId: string }>;
+}): Promise<Metadata> {
+  const { pageId } = await params;
   const props = await getARecordPageById({
     pageId,
     from: "archive-page-metadata",
