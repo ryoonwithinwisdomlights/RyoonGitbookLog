@@ -2,6 +2,8 @@ import { BLOG } from "@/blog.config";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./../styles/animate.css"; // @see https://animate.style/
 import "./../styles/globals.css";
@@ -127,6 +129,12 @@ export default async function RootLayout({ children }: ChildrenProp) {
             <PageObserver />
           </GeneralSiteSettingsProvider>
         </EssentialNavInfoProvider>
+        {BLOG.isProd && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );
