@@ -19,7 +19,8 @@
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "export": "next build && next export",
-    "bundle-report": "ANALYZE=true yarn build"
+    "bundle-report": "ANALYZE=true yarn build",
+    "vercel-install": "pnpm install --no-frozen-lockfile"
   },
   "dependencies": {
     "@fisch0920/medium-zoom": "^1.0.7",
@@ -129,7 +130,7 @@
     "axios": ">=0.21.1"
   },
   "engines": {
-    "node": " >=18.12.1"
+    "node": " >=22.18.0"
   },
   "bugs": {
     "url": "https://github.com/ryoonwithinwisdomlights/norkive/issues",
