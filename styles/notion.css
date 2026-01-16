@@ -1962,7 +1962,8 @@ svg + .notion-page-title-text {
   width: unset !important;
 }
 
-/* pdf预览适配页面 */
+/* 
+PDF preview adaptation page */
 .react-pdf__Page__canvas,
 .react-pdf__Page__textContent {
   width: 100% !important;
