@@ -128,6 +128,10 @@ const CORE_BLOG_CONFIG = {
   PAGE_RECOMMEND_COUNT: 6,
   MENU_SORT_BY: process.env.NEXT_PUBLIC_MENU_SORT_BY || "notion",
   PSEUDO_STATIC: process.env.NEXT_PUBLIC_PSEUDO_STATIC || false,
+  // ISR / SSG controls (keep build-time safe)
+  NEXT_REVALIDATE_SECOND: Number(process.env.NEXT_PUBLIC_NEXT_REVALIDATE_SECOND || 300),
+  // Limit pre-rendered pages at build time to avoid heavy Notion crawling.
+  NEXT_STATIC_PARAMS_LIMIT: Number(process.env.NEXT_PUBLIC_NEXT_STATIC_PARAMS_LIMIT || 30),
 
   // Share
   RECORD_SHARE_BAR_ENABLE: process.env.NEXT_PUBLIC_RECORD_SHARE_BAR || "true",

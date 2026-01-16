@@ -1,23 +1,28 @@
-"use server";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BLOG } from "@/blog.config";
 import { getARecordPageById } from "@/lib/notion/controller";
+import { getStaticPageParams } from "@/lib/notion/api/getStaticPageParams";
 import SingleRecords from "@/modules/blog/records/SingleRecords";
 import ErrorComponent from "@/modules/common/components/shared/ErrorComponent";
 import RightSlidingDrawer from "@/modules/layout/components/RightSlidingDrawer";
 import GeneralRecordTypePageWrapper from "@/modules/layout/templates/GeneralRecordTypePageWrapper";
 
-//
-export async function generateStaticParams() {
-  const records = [{ pageId: "1481eb5c-0337-8087-a304-f2af3275be11" }];
+// ISR: cache the rendered route segment for N seconds.
+// NOTE: Next.js requires a static number literal here.
+export const revalidate = 300;
+// Allow on-demand generation for params not pre-rendered at build.
+export const dynamicParams = true;
 
-  return records.map((record) => ({
-    pageId: record.pageId,
-  }));
+export async function generateStaticParams() {
+  return await getStaticPageParams();
 }
 
-export async function generateMetadata({ params }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ pageId: string }>;
+}): Promise<Metadata> {
   const { pageId } = await params;
 
   const props = await getARecordPageById({
