@@ -19,7 +19,7 @@ export default async function Page({ params, searchParams }: TotalPageParams) {
     <ErrorComponent />;
   }
   const result = await getCategoryAndTagPageById({
-    decodedName: decodedName,
+    decodedName,
     pageProperty: "tags",
     pagenum: pagenum !== undefined ? pagenum : 1,
   });

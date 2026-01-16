@@ -20,7 +20,7 @@ export default async function Page({ params }) {
   }
 
   const result = await getARecordPageById({
-    pageId: pageId,
+    pageId,
     from: "SubMenuPage",
     type: "SubMenuPage",
   });
