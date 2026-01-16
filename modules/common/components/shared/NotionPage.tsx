@@ -6,7 +6,6 @@ import Image from "next/image"; // or import Image from 'next/legacy/image' if y
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useRef } from "react";
-import BodyClassName from "react-body-classname";
 import { NotionRenderer } from "react-notion-x";
 import { useWindowSize } from "usehooks-ts";
 import TweetEmbed from "react-tweet-embed";
@@ -23,6 +22,21 @@ export const site: Site = {
   rootNotionSpaceId: null,
   description: BLOG.DESCRIPTION,
 };
+
+function BodyClassName({ className }: { className: string }) {
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const classes = className.split(/\s+/).filter(Boolean);
+    if (!classes.length) return;
+
+    document.body.classList.add(...classes);
+    return () => {
+      document.body.classList.remove(...classes);
+    };
+  }, [className]);
+
+  return null;
+}
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -215,7 +229,7 @@ const NotionPage = ({ record }) => {
     key: "RECORD_DISABLE_DATABASE_CLICK",
   });
 
-  const { width: windowWidth, height: windowHeight } = useWindowSize();
+  const { width: windowWidth } = useWindowSize();
   const zoom = useMemo(() => {
     if (typeof window !== "undefined") {
       return mediumZoom({
@@ -254,7 +268,7 @@ const NotionPage = ({ record }) => {
     /**
      * Replace the image with HD when viewing it enlarged
      */
-    const observer = new MutationObserver((mutationsList, observer) => {
+    const observer = new MutationObserver((mutationsList, _observer) => {
       mutationsList.forEach((mutation) => {
         if (
           mutation.type === "attributes" &&
@@ -321,7 +335,7 @@ const NotionPage = ({ record }) => {
         recordMap={record?.blockMap}
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
-        showTableOfContents={true}
+        showTableOfContents={showTableOfContents}
         minTableOfContentsItems={minTableOfContentsItems}
         mapPageUrl={mapPageUrl}
         mapImageUrl={mapImgUrl}
