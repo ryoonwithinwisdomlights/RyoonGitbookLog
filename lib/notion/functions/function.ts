@@ -1,5 +1,5 @@
 import { BLOG } from "@/blog.config";
-import { CodeLanguages } from "@/constants/code.languge";
+// import { CodeLanguages } from "@/constants/code.languge";
 import {
   ARCHIVE_PROPERTIES_STATUS_MAP,
   ARCHIVE_PROPERTIES_TYPE_MAP,
@@ -827,16 +827,16 @@ export function filterRecordBlocks(id, pageBlock) {
     delete newPageBlock.block[blockId];
   };
 
-  const mapCodeLanguage = (b: FlterBlockType) => {
-    if (!b.value?.properties) return;
-    const lang = b.value.properties?.language?.[0]?.[0];
-    if (lang && CodeLanguages[lang]) {
-      // b.value.properties.language[0][0] = oldlanguageMap.get(lang);
-      if (b.value?.properties?.language?.[0]?.[0]) {
-        b.value.properties.language[0][0] = CodeLanguages[lang]!; // non-null assertion operator (!)
-      }
-    }
-  };
+  // const mapCodeLanguage = (b: FlterBlockType) => {
+  //   if (!b.value?.properties) return;
+  //   const lang = b.value.properties?.language?.[0]?.[0];
+  //   if (lang && CodeLanguages[lang]) {
+  //     // b.value.properties.language[0][0] = oldlanguageMap.get(lang);
+  //     if (b.value?.properties?.language?.[0]?.[0]) {
+  //       b.value.properties.language[0][0] = CodeLanguages[lang]!; // non-null assertion operator (!)
+  //     }
+  //   }
+  // };
 
   //Loop through each block of the document
   if (blockEntries) {

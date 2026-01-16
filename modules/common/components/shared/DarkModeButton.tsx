@@ -1,7 +1,7 @@
 "use client"; // 클라이언트 컴포넌트
 
 import { useGeneralSiteSettings } from "@/lib/context/GeneralSiteSettingsProvider";
-import { Archive, Settings2Icon } from "lucide-react";
+import { Settings2Icon } from "lucide-react";
 
 /**
  * dark mode button
@@ -23,7 +23,7 @@ const DarkModeButton = (props) => {
         className="w-6 h-6 flex flex-col  justify-center items-center   hover:scale-110 cursor-pointer transform duration-200 "
       >
         {isDarkMode ? (
-          <Settings2Icon className=" text-norkive-light  " />
+          <Settings2Icon className=" text-rwwl-light  " />
         ) : (
           <Settings2Icon className="text-neutral-600" />
         )}

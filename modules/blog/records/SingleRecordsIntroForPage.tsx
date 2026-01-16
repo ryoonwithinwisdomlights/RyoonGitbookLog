@@ -1,15 +1,8 @@
 import { BLOG } from "@/blog.config";
 import { useGeneralSiteSettings } from "@/lib/context/GeneralSiteSettingsProvider";
 import LazyImage from "@/modules/common/components/shared/LazyImage";
-import NotionIcon from "@/modules/common/components/shared/NotionIcon";
 import { Skeleton } from "@/modules/common/ui/Skeleton";
-import {
-  CalendarIcon,
-  EyeIcon,
-  FolderClockIcon,
-  TelescopeIcon,
-} from "lucide-react";
-import Link from "next/link";
+import { CalendarIcon, FolderClockIcon, TelescopeIcon } from "lucide-react";
 
 const SingleRecordsIntroForPage = ({ record, siteInfo }) => {
   const { locale } = useGeneralSiteSettings();
@@ -55,7 +48,7 @@ const SingleRecordsIntroForPage = ({ record, siteInfo }) => {
         <span className="mx-1 ml-2 mr-2"> | </span>
         <div className="flex flex-row items-center">
           <LazyImage
-            src={siteInfo?.icon}
+            src={BLOG.AVATAR}
             className="rounded-full cursor-pointer dark:border dark:border-neutral-300"
             width={16}
             height={16}

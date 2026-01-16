@@ -34,7 +34,7 @@ module.exports = {
         night: {
           DEFAULT: BLOG.BACKGROUND_DARK || "#111827",
         },
-        norkive: {
+        rwwl: {
           light: "#f1efe9e2",
           medium: "#cbcac4e2",
         },

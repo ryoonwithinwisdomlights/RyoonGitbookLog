@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in contributing to **Norkive**.
+Thanks for your interest in contributing to **RyoonGitbookLog**.
 
 ## Development
 

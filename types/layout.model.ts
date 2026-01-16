@@ -36,4 +36,4 @@ export type LeftSideBarNavItem = {
   subMenus?: LeftSideBarNavItem[];
 };
 
-export const NorKiveMenuItem = ["Menu", "SubMenu", "SubMenuPage"];
+export const RyoonGitbookLogMenuItem = ["Menu", "SubMenu", "SubMenuPage"];

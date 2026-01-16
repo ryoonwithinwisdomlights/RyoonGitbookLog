@@ -37,7 +37,7 @@ const DebugPanel = () => {
     <div>
       <div
         style={{ writingMode: "vertical-lr" }}
-        className={`bg-black dark:bg-neutral-800 rounded-l-xl  border-[1px] border-neutral-700 dark:border-white text-xs text-white  shadow-2xl p-1.5  cursor-pointer  ${
+        className={`bg-black dark:bg-neutral-800 rounded-l-xl  border-[1px] border-neutral-700 dark:border-white text-xs text-amber-300  shadow-2xl p-1.5  cursor-pointer  ${
           show ? "md:right-1/2 right-0 " : "right-0"
         } fixed bottom-72 duration-200 z-50`}
         onClick={toggleShow}

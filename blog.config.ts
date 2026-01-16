@@ -1,18 +1,18 @@
 const CORE_BLOG_CONFIG = {
   // Basic site metadata
-  APP_NAME: "Norkive",
+  APP_NAME: "RyoonGitbookLog",
   AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || "ryoonwithinwisdomlights",
   BIO:
     process.env.NEXT_PUBLIC_BIO ||
     "A Software Engineer who likes to Giveaway to the World with Joy, Love and Lights.",
-  TITLE: process.env.NEXT_PUBLIC_TITLE || "Norkive",
+  TITLE: process.env.NEXT_PUBLIC_TITLE || "RyoonGitbookLog",
   DESCRIPTION:
     process.env.NEXT_PUBLIC_DESCRIPTION ||
-    "Norkive - A Static WebBlog for your every Recorded Archive in Notion with Next.js 15",
-  LINK: process.env.NEXT_PUBLIC_LINK || "https://basicnorkive.vercel.app/",
+    "RyoonGitbookLog - A Static WebBlog for your every Recorded Archive in Notion with Next.js 15",
+  LINK: process.env.NEXT_PUBLIC_LINK || "https://ryoongitbooklog.vercel.app/",
   KEYWORDS:
     process.env.NEXT_PUBLIC_KEYWORD ||
-    "Norkive, Gitbook Themed-Static Website, with Notion API",
+    "RyoonGitbookLog, Gitbook Themed-Static Website, with Notion API",
 
   // Contact / social links
   CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",
@@ -68,9 +68,9 @@ const CORE_BLOG_CONFIG = {
 
   // Branding assets
   BLOG_FAVICON: process.env.NEXT_PUBLIC_FAVICON || "/favicon.ico",
-  AVATAR: "/images/norkive_black.png",
+  AVATAR: "/images/rwwl.png",
   HOME_BANNER_IMAGE:
-    process.env.NEXT_PUBLIC_HOME_BANNER_IMAGE || "/images/bg_image.png",
+    process.env.NEXT_PUBLIC_HOME_BANNER_IMAGE || "/images/rwwl_background.png",
 
   // Fonts
   FONT_STYLE: process.env.NEXT_PUBLIC_FONT_STYLE || "font-sans font-light",

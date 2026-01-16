@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     : new URL("http://localhost:3000"),
   // title: BLOG.APP_NAME as string,
   title: {
-    template: "Norkive - %s",
+    template: "RyoonGitbookLog - %s",
     default: BLOG.APP_NAME as string, // 템플릿을 설정할때 default는 필수 요소입니다.
   },
   description: BLOG.DESCRIPTION as string, //
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     title: BLOG.TITLE,
     description: BLOG.DESCRIPTION,
     siteName: BLOG.TITLE,
-    images: "/images/norkive_black.png",
+    images: "/images/rwwl.png",
     url: BLOG.LINK,
   },
   category: BLOG.KEYWORDS || "Software Technology", // section Mainly like category Such classification, Facebook Use this to capture link categories,

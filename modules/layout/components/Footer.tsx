@@ -41,7 +41,7 @@ const Footer = () => {
           href={BLOG.CONTACT_GITHUB}
           className="underline text-neutral-500 dark:text-neutral-300 font-semibold"
         >
-          Norkive
+          RyoonGitbookLog
         </a>
       </div>
       <div className="flex justify-center text-xs">

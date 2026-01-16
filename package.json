@@ -1,17 +1,16 @@
 {
-  "name": "norkive",
+  "name": "ryoongitbooklog",
   "version": "1.0",
-  "homepage": "https://github.com:ryoonwithinwisdomlights/norkive.git",
+  "homepage": "https://github.com:ryoonwithinwisdomlights/ryoongitbooklog.git",
   "license": "MIT",
   "packageManager": "pnpm@10.18.3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ryoonwithinwisdomlights/norkive.git"
+    "url": "https://github.com/ryoonwithinwisdomlights/ryoongitbooklog.git"
   },
   "author": {
-    "name": "ryoon.with.wisdomtrees",
-    "email": "ryoon.with.wisdomtrees@gmail.com",
-    "url": "https://www.ryoonwithwisdomtrees.world/"
+    "name": "ryoonwithinwisdomlights",
+    "email": "devseryun@gmail.com"
   },
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
@@ -126,7 +125,7 @@
     "node": ">=22.18.0"
   },
   "bugs": {
-    "url": "https://github.com/ryoonwithinwisdomlights/norkive/issues",
+    "url": "https://github.com/ryoonwithinwisdomlights/ryoongitbooklog/issues",
     "email": "devseryun@gmail.com"
   }
 }

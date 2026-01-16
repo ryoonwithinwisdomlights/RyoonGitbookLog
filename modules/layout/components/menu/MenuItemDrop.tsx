@@ -9,13 +9,13 @@ import { useState } from "react";
 export const MenuItemDrop = ({ link }) => {
   const [show, changeShow] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   if (!link || !link.show) {
     return null;
   }
   const hasSubMenu = link?.subMenus?.length > 0;
   const selected = pathname === link.to;
-  const router = useRouter();
   const onClickUrl = (sLink) => {
     if (sLink) {
       if (sLink?.type === "SubMenuPage" && !sLink?.id) {
@@ -37,10 +37,10 @@ export const MenuItemDrop = ({ link }) => {
     return (
       <div
         className={
-          "px-2 h-full whitespace-nowrap duration-300 text-sm justify-between text-neutral-700  dark:text-neutral-300 cursor-pointer flex flex-nowrap items-center " +
+          "px-2 h-full whitespace-nowrap duration-300 text-sm justify-between text-neutral-700 hover:text-[#ffd500] dark:text-neutral-300 cursor-pointer flex flex-nowrap items-center " +
           (selected
-            ? "bg-neutral-100 rounded-lg h-4/5 text-neutral-700 hover:text-neutral-700 dark:text-neutral-700  dark:hover:text-black "
-            : "hover:text-black dark:hover:text-[#ffffff]")
+            ? "bg-neutral-100 rounded-lg h-4/5 text-neutral-700  dark:text-neutral-700  dark:hover:text-black "
+            : " dark:hover:text-[#ffffff]")
         }
       >
         <div className="flex flex-row items-center ">
@@ -64,9 +64,9 @@ export const MenuItemDrop = ({ link }) => {
     return (
       <div
         className={
-          "px-2 h-full  whitespace-nowrap duration-300 text-sm justify-between text-neutral-700  dark:text-neutral-300 cursor-pointer flex flex-nowrap items-center " +
+          "px-2 h-full  whitespace-nowrap duration-300 text-sm justify-between hover:text-[#ffd500] text-neutral-700  dark:text-neutral-300 cursor-pointer flex flex-nowrap items-center " +
           (selected
-            ? "bg-neutral-100 rounded-lg h-4/5 text-neutral-700 hover:text-neutral-900 dark:text-neutral-700 dark:hover:text-black "
+            ? "bg-neutral-100 rounded-lg h-4/5 text-neutral-700  dark:text-neutral-700 "
             : " hover:text-black  dark:hover:text-[#ffffff]")
         }
       >
@@ -80,9 +80,8 @@ export const MenuItemDrop = ({ link }) => {
       </div>
     );
   };
-  {
-    /* 하위 메뉴 */
-  }
+
+  // 하위 메뉴
   const renderSubmenus = () => {
     return (
       <ul
@@ -102,7 +101,7 @@ export const MenuItemDrop = ({ link }) => {
             tracking-widest transition-all duration-200  dark:border-neutral-800 py-3 pr-6 pl-3"
               >
                 <div
-                  className="hover:bg-neutral-100  px-2 hover:rounded-lg hover:h-4/5 w-full"
+                  className="hover:bg-[#ffd500]  px-2 hover:rounded-lg hover:h-4/5 w-full"
                   onClick={() => {
                     onClickUrl(sLink);
                   }}

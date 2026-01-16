@@ -17,7 +17,7 @@ const InfoCard = () => {
         }}
       >
         <LazyImage
-          src={"/images/norkive_black.png"}
+          src={"/images/rwwl.png"}
           className="rounded-full dark:border dark:border-neutral-300"
           width={120}
           alt={BLOG.AUTHOR}
@@ -29,7 +29,7 @@ const InfoCard = () => {
          dark:text-neutral-100 dark:hover:text-white px-2 
          hover:rounded-lg hover:h-4/5 transform duration-200 flex justify-center
          hover:underline 
-         decoration-norkive-light
+         decoration-rwwl-light
          "
       >
         {BLOG.AUTHOR}

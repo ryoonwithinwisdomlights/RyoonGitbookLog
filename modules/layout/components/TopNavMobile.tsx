@@ -3,7 +3,7 @@
 import { MobileMenuBar } from "@/modules/layout/components/menu/MobileMenuBar";
 import LogoBar from "@/modules/common/ui/LogoBar";
 import Collapse from "@/modules/common/components/shared/Collapse";
-import DarkModeButton from "@/modules/common/components/shared/DarkModeButton";
+// import DarkModeButton from "@/modules/common/components/shared/DarkModeButton";
 import SettingButton from "@/modules/common/components/shared/SettingButton";
 import { AlignRightIcon, MenuIcon } from "lucide-react";
 
@@ -36,9 +36,9 @@ const TopNavMobile = ({ collapseRef, isOpen, toggleMenuOpen }) => {
             className="cursor-pointer text-lg hover:scale-110 duration-150"
           >
             {isOpen ? (
-              <AlignRightIcon className="dark:text-norkive-light" />
+              <AlignRightIcon className="dark:text-rwwl-light" />
             ) : (
-              <MenuIcon className="dark:text-norkive-light" />
+              <MenuIcon className="dark:text-rwwl-light" />
             )}
           </div>
         </div>
