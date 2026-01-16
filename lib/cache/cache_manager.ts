@@ -4,8 +4,8 @@ import { BLOG } from "@/blog.config";
 
 const isProd = BLOG.isProd;
 const TTL = isProd ? 600 : 7200; // prod: 10min, dev: 2h
-// const useRedis = isProd && isRedisConfigured;
-const useRedis = false;
+const useRedis = isProd && isRedisConfigured;
+
 /**
  * To reduce frequent interface requests，notion data will be cached
  * @param {*} key
