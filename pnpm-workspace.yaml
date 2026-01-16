@@ -1,7 +1,0 @@
-ignoredBuiltDependencies:
-  - canvas
-  - core-js
-  - protobufjs
-  - sharp
-  - unrs-resolver
-  - vue-demi
