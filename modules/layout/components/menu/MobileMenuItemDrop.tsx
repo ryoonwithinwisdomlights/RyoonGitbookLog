@@ -1,7 +1,6 @@
 "use client"; // 클라이언트 컴포넌트
-import { parseIcon } from "@/lib/utils/utils";
+
 import Collapse from "@/modules/common/components/shared/Collapse";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -55,7 +54,6 @@ export const MobileMenuItemDrop = (props) => {
   };
 
   const renderMainMenus = () => {
-    const icon = parseIcon(link.icon);
     return (
       <div
         onClick={toggleOpenSubMenu}
@@ -63,7 +61,7 @@ export const MobileMenuItemDrop = (props) => {
       >
         <div>
           <div className={`${link.icon} text-center w-4 mr-4`} />
-          {icon && <FontAwesomeIcon icon={icon} />} {link.name}
+          {link.name}
         </div>
         <div className="inline-flex items-center ">
           <ChevronRightIcon
@@ -76,7 +74,6 @@ export const MobileMenuItemDrop = (props) => {
     );
   };
   const renderMainMenusWithNoSubMenus = () => {
-    const icon = parseIcon(link.icon);
     return (
       <Link
         href={link?.slug}
@@ -85,7 +82,7 @@ export const MobileMenuItemDrop = (props) => {
       >
         <div>
           <div className={`${link.icon} text-center w-4 mr-4`} />
-          {icon && <FontAwesomeIcon icon={icon} />} {link.name}
+          {link.name}
         </div>
       </Link>
     );
@@ -95,7 +92,6 @@ export const MobileMenuItemDrop = (props) => {
     return (
       <Collapse isOpen={isOpen} onHeightChange={props.onHeightChange}>
         {link?.subMenus?.map((sLink, index) => {
-          const icon = parseIcon(sLink.icon);
           return (
             <div
               key={index}
@@ -112,7 +108,7 @@ export const MobileMenuItemDrop = (props) => {
                   <div
                     className={`${sLink.icon} text-center w-3 mr-3 text-xs`}
                   />
-                  {icon && <FontAwesomeIcon icon={icon} />} {sLink.title}
+                  {sLink.title}
                 </div>
               </div>
             </div>

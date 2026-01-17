@@ -4,7 +4,7 @@ import { getStaticPageParams } from "@/lib/notion/api/getStaticPageParams";
 
 import SingleRecords from "@/modules/blog/records/SingleRecords";
 import ErrorComponent from "@/modules/common/components/shared/ErrorComponent";
-import RightSlidingDrawer from "@/modules/layout/components/RightSlidingDrawer";
+import ResponsiveRightSlidingDrawer from "@/modules/layout/components/ResponsiveRightSlidingDrawer";
 import GeneralRecordTypePageWrapper from "@/modules/layout/templates/GeneralRecordTypePageWrapper";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -64,7 +64,7 @@ export default async function Page({
   return (
     <GeneralRecordTypePageWrapper>
       <SingleRecords props={result} />
-      <RightSlidingDrawer props={result} />
+      <ResponsiveRightSlidingDrawer props={result} />
     </GeneralRecordTypePageWrapper>
   );
 }

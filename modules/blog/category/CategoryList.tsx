@@ -12,7 +12,7 @@ const CategoryList = () => {
   return (
     <div
       className="dark:bg-black dark:text-neutral-300 
-  w-full h-full  flex flex-col   "
+  w-full h-full flex flex-col"
     >
       <div className="flex flex-row text-center items-center dark:text-white text-neutral-700 mb-5">
         {/* <TagIcon/> */}

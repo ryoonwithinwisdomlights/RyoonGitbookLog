@@ -1,6 +1,6 @@
 "use client";
 import BasicRecordPage from "@/modules/blog/records/BasicRecordPage";
-import RightSlidingDrawer from "@/modules/layout/components/RightSlidingDrawer";
+import ResponsiveRightSlidingDrawer from "@/modules/layout/components/ResponsiveRightSlidingDrawer";
 import GeneralRecordTypePageWrapper from "@/modules/layout/templates/GeneralRecordTypePageWrapper";
 
 export default function Page() {
@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <GeneralRecordTypePageWrapper>
       <BasicRecordPage />
-      <RightSlidingDrawer props={props} />
+      <ResponsiveRightSlidingDrawer props={props} />
     </GeneralRecordTypePageWrapper>
   );
 }

@@ -1,6 +1,4 @@
 "use client";
-import { parseIcon } from "@/lib/utils/utils";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ChevronDownIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -33,7 +31,6 @@ export const MenuItemDrop = ({ link }) => {
   };
 
   const renderMainMenus = () => {
-    const icon = parseIcon(link.icon);
     return (
       <div
         className={
@@ -44,7 +41,6 @@ export const MenuItemDrop = ({ link }) => {
         }
       >
         <div className="flex flex-row items-center ">
-          {icon && <FontAwesomeIcon icon={icon} className="mr-1" />}{" "}
           {link?.title}
           {hasSubMenu && (
             <ChevronDownIcon
@@ -59,8 +55,6 @@ export const MenuItemDrop = ({ link }) => {
   };
 
   const renderMainMenusWithNoSubMenus = () => {
-    const icon = parseIcon(link.icon);
-
     return (
       <div
         className={
@@ -74,7 +68,6 @@ export const MenuItemDrop = ({ link }) => {
           href={link?.slug}
           target={link?.slug?.indexOf("http") === 0 ? "_blank" : "_self"}
         >
-          {icon && <FontAwesomeIcon icon={icon} className="mr-1" />} &nbsp;
           {link?.title}
         </Link>
       </div>
@@ -91,8 +84,6 @@ export const MenuItemDrop = ({ link }) => {
         transition-all duration-300 z-20 absolute block drop-shadow-lg rounded-lg `}
       >
         {link?.subMenus?.map((sLink, index) => {
-          const iconForRenderSubmenus = parseIcon(sLink.icon);
-
           return (
             <div key={index} className="h-full w-full">
               <li
@@ -107,12 +98,6 @@ export const MenuItemDrop = ({ link }) => {
                   }}
                 >
                   <span className="text-xs  hover:text-black   ">
-                    {iconForRenderSubmenus && (
-                      <FontAwesomeIcon
-                        icon={iconForRenderSubmenus}
-                        className="mr-1"
-                      />
-                    )}
                     &nbsp;{sLink.title}
                   </span>
                 </div>

@@ -4,26 +4,18 @@ import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import "./../styles/animate.css"; // @see https://animate.style/
+
+import "./../styles/animate-lite.css";
 import "./../styles/globals.css";
 import "./../styles/utility-patterns.css";
 
-// used for code syntax highlighting (optional)
-import "prismjs/themes/prism-tomorrow.css";
-// core styles shared by all of react-notion-x (required)
-import "react-notion-x/src/styles.css";
-// global style overrides for notion
-import "./../styles/notion.css";
-// global style overrides for prism theme (optional)
-import "./../styles/prism-theme.css";
-// used for rendering equations (optional)
-
-import "katex/dist/katex.min.css";
+// NOTE:
+// Heavy, route-specific CSS (Notion renderer / Prism / KaTeX) is intentionally
+// not imported here to avoid bloating `/_next/static/css/app/layout.css`
+// and blocking initial render on non-record pages.
 
 import MobileLeftNavDrawer from "@/modules/layout/components/MobileLeftNavDrawer";
 
-// import initArchiveGlobalData from "@/lib/notion/controller";
 import BottomMenuBar from "@/modules/layout/components/menu/BottomMenuBar";
 import LoadingCover from "@/modules/common/ui/LoadingCover";
 import TopNavBar from "@/modules/layout/components/TopNavBar";
@@ -39,10 +31,11 @@ import MainLayoutWrapper from "../modules/layout/templates/MainLayoutWrapper";
 import LeftNavigationBar from "@/modules/layout/components/LeftNavigationBar";
 import { ModalProvider } from "@/lib/context/ModalProvider";
 
-import { config } from "@fortawesome/fontawesome-svg-core";
+
 import JumpToBackButton from "@/modules/common/components/JumpToBackButton";
 import { getAllRecordPageListByType } from "@/lib/notion/controller";
-config.autoAddCss = false;
+import { WebVitals } from "@/modules/common/WebVitals";
+
 
 export const viewport: Viewport = {
   // themeColor: "normal",
@@ -97,6 +90,7 @@ export default async function RootLayout({ children }: ChildrenProp) {
   return (
     <html lang="en" suppressHydrationWarning className={GeistSans.className}>
       <body>
+      <WebVitals />
         <EssentialNavInfoProvider
           globalNotionData={globalNotionData}
           from={"index"}

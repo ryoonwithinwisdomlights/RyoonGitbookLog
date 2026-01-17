@@ -1,5 +1,5 @@
 import React from "react";
-import RightSlidingDrawer from "../components/RightSlidingDrawer";
+import ResponsiveRightSlidingDrawer from "../components/ResponsiveRightSlidingDrawer";
 
 export default function NoRecordTypePageWrapper({
   children,
@@ -12,7 +12,7 @@ export default function NoRecordTypePageWrapper({
         {children}
       </div>
 
-      <RightSlidingDrawer props={null} />
+      <ResponsiveRightSlidingDrawer props={null} />
     </div>
   );
 }

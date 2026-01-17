@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { BLOG } from "@/blog.config";
 import SocialButton from "@/modules/common/ui/SocialButton";
-import LazyImage from "@/modules/common/components/shared/LazyImage";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const InfoCard = () => {
@@ -16,11 +16,16 @@ const InfoCard = () => {
           router.push("/");
         }}
       >
-        <LazyImage
-          src={"/images/rwwl.png"}
-          className="rounded-full dark:border dark:border-neutral-300"
-          width={120}
+        <Image
+          src={BLOG.AVATAR}
           alt={BLOG.AUTHOR}
+          width={120}
+          height={120}
+          sizes="120px"
+          priority
+          placeholder="blur"
+          blurDataURL={BLOG.IMG_LAZY_LOAD_PLACEHOLDER}
+          className="rounded-full dark:border dark:border-neutral-300"
         />
       </div>
       <div

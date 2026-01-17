@@ -48,6 +48,22 @@ const nextConfig: NextConfig = {
       },
       { protocol: "https", hostname: "abs.twimg.com" },
       { protocol: "https", hostname: "pbs.twimg.com" },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "camo.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "github.com",
+      },
+      {
+        protocol: "https",
+        hostname: "github.githubassets.com",
+      },
       { protocol: "https", hostname: "s3.us-west-2.amazonaws.com" },
     ],
   },
@@ -94,6 +110,35 @@ const nextConfig: NextConfig = {
       config.devtool = "source-map";
     }
 
+    // Silence a known Webpack warning emitted by Sentry/OpenTelemetry's
+    // `require-in-the-middle` (dynamic require prevents static extraction).
+    // This keeps other warnings visible.
+    config.ignoreWarnings = [
+      ...(config.ignoreWarnings ?? []),
+      (warning: any) => {
+        const message: string | undefined = warning?.message;
+        if (
+          typeof message !== "string" ||
+          !message.includes(
+            "Critical dependency: require function is used in a way in which dependencies cannot be statically extracted"
+          )
+        ) {
+          return false;
+        }
+
+        const mod = warning?.module;
+        const resource: string | undefined = mod?.resource;
+        const identifier: string | undefined = mod?.identifier;
+
+        return (
+          (typeof resource === "string" &&
+            resource.includes("require-in-the-middle")) ||
+          (typeof identifier === "string" &&
+            identifier.includes("require-in-the-middle"))
+        );
+      },
+    ];
+
     if (!isServer) {
       config.resolve.fallback = {
         fs: false, // 클라이언트 번들에서 fs 제거
@@ -108,6 +153,14 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     scrollRestoration: true,
+    // App Router: Critters-based optimizeCss isn't compatible with streaming.
+    // inlineCss removes the extra CSS request in production by inlining styles.
+    // Trade-off: some duplication in HTML/RSC payload.
+    inlineCss: true,
+    optimizePackageImports: [
+      "lucide-react",
+      "@radix-ui/react-icons",
+    ],
   },
 };
 
