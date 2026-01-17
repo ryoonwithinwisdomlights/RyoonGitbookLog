@@ -2,19 +2,16 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BLOG } from "@/blog.config";
 import { getARecordPageById } from "@/lib/notion/controller";
-import { getStaticPageParams } from "@/lib/notion/api/getStaticPageParams";
 import SingleRecords from "@/modules/blog/records/SingleRecords";
 import ErrorComponent from "@/modules/common/components/shared/ErrorComponent";
 import ResponsiveRightSlidingDrawer from "@/modules/layout/components/ResponsiveRightSlidingDrawer";
 import GeneralRecordTypePageWrapper from "@/modules/layout/templates/GeneralRecordTypePageWrapper";
 
-// NOTE: Next.js requires a static number literal here.
-export const revalidate = 300;
-export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  return await getStaticPageParams();
-}
+// NOTE:
+// This page uses Upstash Redis during render (POST /pipeline), which Next.js
+// considers "no-store" and therefore cannot be statically rendered/ISR'd.
+// Force SSR to avoid `DYNAMIC_SERVER_USAGE` errors on Vercel.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -39,7 +36,6 @@ export async function generateMetadata({
   };
 }
 
-// `generateStaticParams`가 반환한 `params`를 사용하여 이 페이지의 여러 버전이 정적으로 생성됩니다.
 export default async function Page({
   params,
 }: {
