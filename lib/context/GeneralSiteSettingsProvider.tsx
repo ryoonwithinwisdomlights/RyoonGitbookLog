@@ -1,26 +1,25 @@
 "use client";
+import { BLOG } from "@/blog.config";
+import {
+  GeneralSiteSettingsProviderContext,
+  LeftSideBarNavItem,
+} from "@/types";
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
-  useRef,
-  useState,
+  useState
 } from "react";
-import { useRouter } from "next/router";
-import { BLOG } from "@/blog.config";
-import {
-  LeftSideBarNavItem,
-  GeneralSiteSettingsProviderContext,
-} from "@/types";
 
-import { initDarkMode, setThemeByLocalStorage } from "@/lib/utils/theme";
 import {
   generateLocaleDict,
   getFilteredDictionaryListKey,
-  initLocale,
-  saveLangToLocalStorage,
+  saveLangToCookies,
+  saveLangToLocalStorage
 } from "@/lib/utils/lang";
+import { initDarkMode, setThemeByLocalStorage } from "@/lib/utils/theme";
 import { toast } from "sonner";
 
 const GeneralSiteSettings =
@@ -54,39 +53,51 @@ export const GeneralSiteSettingsProvider: React.FC<{
   const [filteredNavPages, setFilteredNavPages] = useState<
     LeftSideBarNavItem[]
   >(allPagesForLeftNavBar);
-  const isFirstRender = useRef(true);
+  // const isFirstRender = useRef(true);
 
   const handleTOCVisible = () => setTOCVisible(!tocVisible);
 
   const handleLeftNavVisible = () => setPageNavVisible(!pageNavVisible);
 
-  function changeLang(lang: string) {
+  const changeLang = useCallback((lang: string) => {
     if (lang) {
       saveLangToLocalStorage(lang);
+      saveLangToCookies(lang);
       updateLang(lang);
-      updateLocale(generateLocaleDict(lang));
+      const newLocale = generateLocaleDict(lang);
+      updateLocale(newLocale);
+      toast.success(`${newLocale.SITE.LANG_CHANGE_SUCCESS_MSG}`);
     }
-  }
+  }, []);
 
-  function changeOppositeLang() {
+  const changeOppositeLang = useCallback(() => {
     const resLang = getFilteredDictionaryListKey(locale.LOCALE);
 
     if (resLang) {
       saveLangToLocalStorage(resLang);
+      saveLangToCookies(resLang);
       updateLang(resLang);
-      updateLocale(generateLocaleDict(resLang));
+      const newLocale = generateLocaleDict(resLang);
+      updateLocale(newLocale);
+      toast.success(`${newLocale.SITE.LANG_CHANGE_SUCCESS_MSG}`);
     }
-  }
-  const handleChangeDarkMode = (newStatus = !isDarkMode) => {
-    setThemeByLocalStorage(newStatus);
-    updateDarkMode(newStatus);
-    const htmlElement = document.getElementsByTagName("html")[0];
-    htmlElement.classList?.remove(newStatus ? "light" : "dark");
-    htmlElement.classList?.add(newStatus ? "dark" : "light");
-  };
-  const handleSettings = () => {
+  }, [locale.LOCALE]);
+
+  const handleChangeDarkMode = useCallback(
+    (newStatus = !isDarkMode) => {
+      setThemeByLocalStorage(newStatus);
+      updateDarkMode(newStatus);
+      const htmlElement = document.getElementsByTagName("html")[0];
+      htmlElement.classList?.remove(newStatus ? "light" : "dark");
+      htmlElement.classList?.add(newStatus ? "dark" : "light");
+    },
+    [isDarkMode]
+  );
+
+  const handleSettings = useCallback(() => {
     SetSettingState((prev) => !prev);
-  };
+  }, []);
+
   const value: GeneralSiteSettingsProviderContext = {
     onLoading,
     setOnLoading,
@@ -112,20 +123,21 @@ export const GeneralSiteSettingsProvider: React.FC<{
 
   useEffect(() => {
     initDarkMode(updateDarkMode);
-    initLocale(lang, locale, updateLang, updateLocale);
+    // 첫 렌더링에서는 initLocale을 호출하지 않음 (서버에서 이미 올바른 locale 설정됨)
+    // initLocale(lang, locale, updateLang, updateLocale);
     setOnLoading(false);
   }, []);
 
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+  // useEffect(() => {
+  //   if (isFirstRender.current) {
+  //     isFirstRender.current = false;
+  //     return;
+  //   }
 
-    initLocale(lang, locale, updateLang, updateLocale);
-    setOnLoading(false);
-    toast.success(`${locale.SITE.LANG_CHANGE_SUCCESS_MSG} `);
-  }, [lang]);
+  //   initLocale(lang, locale, updateLang, updateLocale);
+  //   setOnLoading(false);
+  //   toast.success(`${locale.SITE.LANG_CHANGE_SUCCESS_MSG} `);
+  // }, [lang]);
 
   return (
     <GeneralSiteSettings.Provider value={value}>

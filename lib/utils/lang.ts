@@ -108,3 +108,16 @@ export const loadLangFromLocalStorage = () => {
 export const saveLangToLocalStorage = (lang) => {
   localStorage.setItem("lang", lang);
 };
+
+/**
+ * 쿠키에 언어 저장 (서버 사이드 렌더링을 위해)
+ * @param lang - 저장할 언어 코드
+ */
+export const saveLangToCookies = (lang: string): void => {
+  if (isBrowser) {
+    // 쿠키에 저장 (7일 유효)
+    document.cookie = `lang=${lang}; path=/; max-age=${
+      7 * 24 * 60 * 60
+    }; SameSite=Lax`;
+  }
+};

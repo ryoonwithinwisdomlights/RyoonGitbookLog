@@ -4,7 +4,7 @@ import { BaseArchivePageBlock } from "@/types";
 import { EssentialNavInfo, GlobalNotionData } from "@/types/provider.model";
 import { useRouter } from "next/navigation";
 import NextNProgress from "nextjs-progressbar";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext } from "react";
 
 const GlobalContext = createContext<EssentialNavInfo | undefined>(undefined);
 /**
@@ -33,16 +33,13 @@ export function EssentialNavInfoProvider({
     allPages,
   } = globalNotionData;
 
-  const [currentpageId, setCurrentpageId] =
-    useState<BaseArchivePageBlock | null>(null);
-
   const router = useRouter();
 
   const handleRouter = (page: BaseArchivePageBlock) => {
     router.push(`/${page.slug}`);
   };
   const cleanCurrentRecordData = () => {
-    // setCurrentRecordData(null);
+
   };
 
   return (
@@ -56,7 +53,7 @@ export function EssentialNavInfoProvider({
         notice,
         latestRecords: latestRecords ?? [],
         allPages: allPages ?? [],
-        // currentRecordData,
+    
         handleRouter,
         cleanCurrentRecordData,
       }}

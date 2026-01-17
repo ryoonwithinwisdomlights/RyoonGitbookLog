@@ -38,6 +38,8 @@ const CORE_BLOG_CONFIG = {
     type_page: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_PAGE || "Page",
     type_notice:
       process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_NOTICE || "Notice",
+    type_tags: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_TAGS || "tags",
+    type_category: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_CATEGORY || "category",
     type_menu: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_MENU || "Menu",
     type_sub_menu:
       process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_SUB_MENU || "SubMenu",
