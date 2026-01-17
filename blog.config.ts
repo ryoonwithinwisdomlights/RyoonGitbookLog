@@ -5,14 +5,14 @@ const CORE_BLOG_CONFIG = {
   BIO: //우측에 나타나는 소개문구에요
     process.env.NEXT_PUBLIC_BIO ||
     "A Software Engineer who likes to Giveaway to the World with Joy, Love and Lights.",
-  TITLE: process.env.NEXT_PUBLIC_TITLE || "RyoonGitbookLog", //메타 타이틀에요
+  TITLE: process.env.NEXT_PUBLIC_TITLE || "이름을 바꿔주세요", // 사이트 메타 타이틀에요
   DESCRIPTION: //메타 설명에요
     process.env.NEXT_PUBLIC_DESCRIPTION ||
-    "RyoonGitbookLog - A Static WebBlog for your every Recorded Archive in Notion with Next.js 15",
+    "Description을 바꿔주세요 - A Static WebBlog for your every Recorded Archive in Notion with Next.js 15",
   LINK: process.env.NEXT_PUBLIC_LINK || "https://ryoongitbooklog.vercel.app/",
   KEYWORDS: //메타 키워드에요
     process.env.NEXT_PUBLIC_KEYWORD ||
-    "RyoonGitbookLog, Gitbook Themed-Static Website, with Notion API",
+    "Keywords를 바꿔주세요. RyoonGitbookLog, Gitbook Themed-Static Website, with Notion API",
 
   // Contact / social links
   CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "", //이메일 링크에요
@@ -60,9 +60,9 @@ const CORE_BLOG_CONFIG = {
 
   // Branding assets
   BLOG_FAVICON: process.env.NEXT_PUBLIC_FAVICON || "/favicon.ico",
-  AVATAR: "/images/rwwl.png", //프로필 이미지에요
+  AVATAR: "/images/rwwl.png", //프로필 이미지를 바꿔주세요. 기본 이미지는 /images/rwwl.png 입니다.
   HOME_BANNER_IMAGE:
-    process.env.NEXT_PUBLIC_HOME_BANNER_IMAGE || "/images/rwwl_background.png",
+    process.env.NEXT_PUBLIC_HOME_BANNER_IMAGE || "/images/rwwl_background.png", //홈 배너 이미지를 바꿔주세요. 기본 이미지는 /images/rwwl_background.png 입니다.
 
   // Fonts
   FONT_STYLE: process.env.NEXT_PUBLIC_FONT_STYLE || "font-sans font-light",
