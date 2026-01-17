@@ -1,7 +1,7 @@
 ## 📚 RyoonGitbookLog
 
-![RyoonGitbookLog Intro](public/images/Intro_260116.png)
-
+![RyoonGitbookLog Intro](public/images/intro_white.png)
+![RyoonGitbookLog Intro](public/images/intro_dark.png)
 - Notion DB를 CMS로 사용하는 **Next.js 15 (App Router) + TypeScript** 기반 블로그/문서 스타터 템플릿(starter kit).
 - Notion 템플릿을 복제한 뒤, 환경변수만 설정하면 로컬 실행 및 배포가 가능해요!
 

@@ -14,7 +14,7 @@ const CORE_BLOG_CONFIG = {
 INTRO:{
     sub_title: process.env.NEXT_PUBLIC_INTRO_SUB_TITLE || "✨ Welcome to",// 자유롭게 커스터마이징 해주세요.
     title: process.env.NEXT_PUBLIC_INTRO_TITLE || "Ryoon.Gitbook.Log",// 자유롭게 커스터마이징 해주세요.
-    description: process.env.NEXT_PUBLIC_INTRO_DESCRIPTION || "Please enjoy your Own Archive!" // 자유롭게 커스터마이징 해주세요.
+    description: process.env.NEXT_PUBLIC_INTRO_DESCRIPTION || "Browse all your archives written and recorded in Notion!" // 자유롭게 커스터마이징 해주세요.
   },
   // Contact / social links
   CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "", //이메일 링크에요
