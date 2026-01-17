@@ -50,7 +50,7 @@ const Footer = () => {
             href={BLOG.LINK}
             className="underline font-bold text-neutral-500 dark:text-neutral-300 "
           >
-            {BLOG.AUTHOR}
+            Ryoonwithwisdomlights
           </a>
           .<br />
         </div>
