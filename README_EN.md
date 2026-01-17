@@ -5,11 +5,11 @@
 - A Notion DB–powered blog / documentation starter template (starter kit) built with **Next.js 15 (App Router) + TypeScript**.
 - Duplicate the Notion template, set a few environment variables, and you’re ready to run/deploy.
 
-> References / inspiration:
+### References / inspiration:
 > - [transitive-bullshit/nextjs-notion-starter-kit](https://github.com/transitive-bullshit/nextjs-notion-starter-kit)
 > - [tangly1024/NotionNext](https://github.com/tangly1024/NotionNext)
->>       - Inspired by the Gitbook Theme of NotionNext (based on Next.js 13 Page Router and written entirely in Javascript). 
->>       - Currently, this open source project, RyoonGitbookLog, has been fully migrated and rewritten/restructured/evolved to **Next.js 15 App Router-based + TypeScript**.
+    - Inspired by the Gitbook Theme of NotionNext (based on Next.js 13 Page Router and written entirely in Javascript). 
+    - Currently, this open source project, RyoonGitbookLog, has been fully migrated and rewritten/restructured/evolved to **Next.js 15 App Router-based + TypeScript**.
 
 ## Notion template (duplicate & use)
 

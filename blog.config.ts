@@ -1,43 +1,33 @@
 const CORE_BLOG_CONFIG = {
   // Basic site metadata
-  APP_NAME: "RyoonGitbookLog",
+  APP_NAME: "RyoonGitbookLog", //사이트 이름에요
   AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || "ryoonwithinwisdomlights",
-  BIO:
+  BIO: //우측에 나타나는 소개문구에요
     process.env.NEXT_PUBLIC_BIO ||
     "A Software Engineer who likes to Giveaway to the World with Joy, Love and Lights.",
-  TITLE: process.env.NEXT_PUBLIC_TITLE || "RyoonGitbookLog",
-  DESCRIPTION:
+  TITLE: process.env.NEXT_PUBLIC_TITLE || "RyoonGitbookLog", //메타 타이틀에요
+  DESCRIPTION: //메타 설명에요
     process.env.NEXT_PUBLIC_DESCRIPTION ||
     "RyoonGitbookLog - A Static WebBlog for your every Recorded Archive in Notion with Next.js 15",
   LINK: process.env.NEXT_PUBLIC_LINK || "https://ryoongitbooklog.vercel.app/",
-  KEYWORDS:
+  KEYWORDS: //메타 키워드에요
     process.env.NEXT_PUBLIC_KEYWORD ||
     "RyoonGitbookLog, Gitbook Themed-Static Website, with Notion API",
 
   // Contact / social links
-  CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",
+  CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "", //이메일 링크에요
   CONTACT_TWITTER: process.env.NEXT_PUBLIC_CONTACT_TWITTER || "",
-  CONTACT_GITHUB: process.env.NEXT_PUBLIC_CONTACT_GITHUB || "",
-  CONTACT_INSTAGRAM: process.env.NEXT_PUBLIC_CONTACT_INSTAGRAM || "",
-  CONTACT_LINKEDIN: process.env.NEXT_PUBLIC_CONTACT_LINKEDIN || "",
+  CONTACT_GITHUB: process.env.NEXT_PUBLIC_CONTACT_GITHUB || "", //깃허브 링크에요
+  CONTACT_INSTAGRAM: process.env.NEXT_PUBLIC_CONTACT_INSTAGRAM || "", //인스타그램 링크에요
+  CONTACT_LINKEDIN: process.env.NEXT_PUBLIC_CONTACT_LINKEDIN || "", //링크드인 링크에요
 
   // Notion
-  NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID,
+  NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID, //Notion DB 페이지 ID에요
   NOTION_HOST: process.env.NEXT_PUBLIC_NOTION_HOST || "https://www.notion.so",
   NOTION_PROPERTY_NAME: {
-    // canonical field keys used by the app
-    title: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TITLE || "title",
-    status: process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS || "status",
-    slug: process.env.NEXT_PUBLIC_NOTION_PROPERTY_SLUG || "slug",
-    category: process.env.NEXT_PUBLIC_NOTION_PROPERTY_CATEGORY || "category",
-    date: process.env.NEXT_PUBLIC_NOTION_PROPERTY_DATE || "date",
-    tags: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TAGS || "tags",
-    icon: process.env.NEXT_PUBLIC_NOTION_PROPERTY_ICON || "icon",
-    summary: process.env.NEXT_PUBLIC_NOTION_PROPERTY_SUMMARY || "summary",
-
     // type / status value mapping
-    type: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE || "type",
-    type_able_arr: ["RECORD", "GENERAL", "PROJECT", "ENGINEERING"],
+    type: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE || "type", //레코드 타입에요
+    type_able_arr: ["RECORD", "GENERAL", "PROJECT", "ENGINEERING"], //블로그 글 타입으로 가능한 값들에요
     type_record: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_POST || "RECORD",
     type_general:
       process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_POST || "GENERAL",
@@ -56,19 +46,19 @@ const CORE_BLOG_CONFIG = {
       "SubMenuPage",
 
     status_publish:
-      process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS_PUBLISH || "Published",
+      process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS_PUBLISH || "Published", //공개 상태에요
     status_invisible:
-      process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS_INVISIBLE || "Invisible",
+      process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS_INVISIBLE || "Invisible", //비공개 상태에요
   },
 
   // i18n / theme
-  LANG: process.env.NEXT_PUBLIC_LANG || "kr-KR",
-  APPEARANCE: process.env.NEXT_PUBLIC_APPEARANCE || "light",
-  APPEARANCE_DARK_TIME: process.env.NEXT_PUBLIC_APPEARANCE_DARK_TIME || [18, 6],
+  LANG: process.env.NEXT_PUBLIC_LANG || "kr-KR", //사이트 기본 설정 언어에요
+  APPEARANCE: process.env.NEXT_PUBLIC_APPEARANCE || "light", //사이트 기본 테마 색상에요
+  APPEARANCE_DARK_TIME: process.env.NEXT_PUBLIC_APPEARANCE_DARK_TIME || [18, 6], //다크모드 시작 시간과 종료 시간에요
 
   // Branding assets
   BLOG_FAVICON: process.env.NEXT_PUBLIC_FAVICON || "/favicon.ico",
-  AVATAR: "/images/rwwl.png",
+  AVATAR: "/images/rwwl.png", //프로필 이미지에요
   HOME_BANNER_IMAGE:
     process.env.NEXT_PUBLIC_HOME_BANNER_IMAGE || "/images/rwwl_background.png",
 
@@ -105,7 +95,7 @@ const CORE_BLOG_CONFIG = {
   ],
 
   // UI / Behavior
-  CAN_COPY: process.env.NEXT_PUBLIC_CAN_COPY,
+  CAN_COPY: process.env.NEXT_PUBLIC_CAN_COPY, //복사 가능 여부에요 false일시 우측 클릭이 불가능해요
   IMG_LAZY_LOAD_PLACEHOLDER:
     process.env.NEXT_PUBLIC_IMG_LAZY_LOAD_PLACEHOLDER ||
     "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
