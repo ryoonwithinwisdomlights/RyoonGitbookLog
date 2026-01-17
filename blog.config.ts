@@ -14,9 +14,9 @@ const CORE_BLOG_CONFIG = {
     process.env.NEXT_PUBLIC_KEYWORD ||
     "Keywords를 바꿔주세요. 기본 키워드는 RyoonGitbookLog, Gitbook Themed-Static Website, with Notion API 입니다.",
 INTRO:{
-    sub_title: process.env.NEXT_PUBLIC_INTRO_SUB_TITLE || "안녕하세요,",// 자유롭게 커스터마이징 해주세요.
+    sub_title: process.env.NEXT_PUBLIC_INTRO_SUB_TITLE || "✨ Welcome to",// 자유롭게 커스터마이징 해주세요.
     title: process.env.NEXT_PUBLIC_INTRO_TITLE || "Ryoon.Gitbook.Log",// 자유롭게 커스터마이징 해주세요.
-    description: process.env.NEXT_PUBLIC_INTRO_DESCRIPTION || "를 사용해주시는 분들, 환영합니다." // 자유롭게 커스터마이징 해주세요.
+    description: process.env.NEXT_PUBLIC_INTRO_DESCRIPTION || "Please enjoy your Own Archive!" // 자유롭게 커스터마이징 해주세요.
   },
   // Contact / social links
   CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "", //이메일 링크에요
