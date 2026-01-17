@@ -1,6 +1,5 @@
 import { BLOG } from "@/blog.config";
 import { getGlobalRecordPageData } from "@/lib/notion/serviceImpl";
-import { formatDate } from "@/lib/utils/utils";
 import { BaseArchivePageBlock } from "@/types/record.model";
 import type { MetadataRoute } from "next";
 type ChangeFrequency =
@@ -20,33 +19,34 @@ type ChangeFrequency =
  *
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = new URL(BLOG.LINK);
   const globalData = await getGlobalRecordPageData({
     pageId: BLOG.NOTION_DATABASE_ID as string,
   });
   const dailyVariable: ChangeFrequency = "daily";
 
-  const urls = [
+  const urls: MetadataRoute.Sitemap = [
     {
-      url: `${BLOG.LINK}`,
-      lastModified: new Date().toISOString().split("T")[0],
+      url: baseUrl.toString(),
+      lastModified: new Date(),
       changeFrequency: dailyVariable,
       priority: 1,
     },
     {
-      url: `${BLOG.LINK}records`,
-      lastModified: new Date().toISOString().split("T")[0],
+      url: new URL("/records", baseUrl).toString(),
+      lastModified: new Date(),
       changeFrequency: dailyVariable,
       priority: 1,
     },
     {
-      url: `${BLOG.LINK}project`,
-      lastModified: new Date().toISOString().split("T")[0],
+      url: new URL("/project", baseUrl).toString(),
+      lastModified: new Date(),
       changeFrequency: dailyVariable,
       priority: 1,
     },
     {
-      url: `${BLOG.LINK}engineering`,
-      lastModified: new Date().toISOString().split("T")[0],
+      url: new URL("/engineering", baseUrl).toString(),
+      lastModified: new Date(),
       changeFrequency: dailyVariable,
       priority: 1,
     },
@@ -59,13 +59,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         p.status === BLOG.NOTION_PROPERTY_NAME.status_publish
     )
     .forEach((record: BaseArchivePageBlock) => {
-      const lmd =
-        record.lastEditedDate && record.date?.start_date
-          ? formatDate(record.date.start_date, BLOG.LANG)
-          : formatDate(record.lastEditedDate ?? new Date(), BLOG.LANG);
+      const lastModified = record.lastEditedDate
+        ? new Date(record.lastEditedDate)
+        : record.date?.start_date
+          ? new Date(record.date.start_date)
+          : new Date();
       urls.push({
-        url: `${BLOG.LINK}${record.type.toLowerCase()}/${record.id}`,
-        lastModified: lmd,
+        url: new URL(`/${record.type.toLowerCase()}/${record.id}`, baseUrl).toString(),
+        lastModified,
         changeFrequency: dailyVariable,
         priority: 1,
       });

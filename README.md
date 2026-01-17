@@ -2,7 +2,7 @@
 
 ![RyoonGitbookLog Intro](public/images/Intro_260116.png)
 
-Notion 데이터베이스를 CMS로 사용하는 **Next.js 15 (App Router) + TypeScript** 기반 블로그/문서 프레임워크입니다.  
+Notion 데이터베이스를 CMS로 사용하는 **Next.js 15 (App Router) + TypeScript** 기반 블로그/문서 스타터입니다.  
 사용자는 Notion 템플릿을 복제한 뒤, 환경변수만 설정하면 로컬 실행 및 배포가 가능합니다.
 
 
