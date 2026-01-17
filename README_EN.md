@@ -31,7 +31,7 @@
 
 ### Content & navigation
 
-- Record-type routes: `general`, `project`, `engineering`, `archive`
+- Post(record)-type routes: `general`, `project`, `engineering`, `archive`
 - Category & tag pages: `/category`, `/tag`
 - Left navigation (sidebar) + mobile drawer
 - Header search: fuzzy search via `fuse.js`
@@ -83,15 +83,24 @@
 
 ## Performance & Lighthouse
 
-Following the `react-notion-x` guidance (lazy-load heavyweight blocks via `next/dynamic`), this template keeps the initial bundle lean by enabling optional Notion blocks only when needed. Reference: [react-notion-x README](https://github.com/NotionX/react-notion-x/blob/master/readme.md)
+This template keeps initial load fast even with Notion rendering by applying:
+
+- **CSS code-splitting**: Notion/Prism/KaTeX styles load only on record routes
+- **Render-blocking CSS reduction (production)**: `experimental.inlineCss` reduces stylesheet link requests
+- **Slim animation CSS**: `animate.css` → `animate-lite.css` (only the keyframes actually used)
+- **Mobile bundle savings**: the right drawer (`RightSlidingDrawer`) is dynamically loaded only on desktop
+- **RUM (Web Vitals)**: capture Core Web Vitals via `useReportWebVitals` + baseline storage/debug helpers
+
+Reference: `react-notion-x` recommends lazy-loading heavyweight blocks via `next/dynamic` — [react-notion-x README](https://github.com/NotionX/react-notion-x/blob/master/readme.md)
 
 ### Lighthouse (free)
 
-For meaningful results, run Lighthouse against a **production build** (`pnpm build` + `pnpm start`), not `pnpm dev`.
+For meaningful results, run Lighthouse against a **production build**, not `pnpm dev`.  
+This project uses `output: "standalone"`, so the closest “real” runtime is:
 
 ```bash
 pnpm build
-pnpm start --port 3000
+PORT=3000 node .next/standalone/server.js
 
 npx lighthouse http://localhost:3000 \
   --preset=desktop \
@@ -99,6 +108,8 @@ npx lighthouse http://localhost:3000 \
   --output=html \
   --output-path=./lighthouse-home.html
 ```
+
+> Trade-off (one line): `experimental.inlineCss` reduces CSS requests, but can slightly increase initial HTML/RSC payload size.
 
 ---
 

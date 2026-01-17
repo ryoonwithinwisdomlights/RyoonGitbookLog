@@ -33,7 +33,7 @@
 
 ### 콘텐츠/네비게이션
 
-- **레코드 타입 라우팅**: `general`, `project`, `engineering`, `archive` 타입 페이지
+- **레코드(포스트) 타입 라우팅**: `general`, `project`, `engineering`, `archive` 타입 페이지
 - **카테고리/태그 페이지**: `/category`, `/tag`
 - **좌측 내비게이션(사이드바) + 모바일 Drawer**
 - **상단 검색(헤더 검색)**: `fuse.js` 기반 fuzzy search
@@ -85,15 +85,24 @@
 
 ## Performance & Lighthouse
 
-`react-notion-x`가 권장하듯(heavy component는 `next/dynamic`으로 지연 로드), 이 템플릿도 Notion 렌더링 영역을 **필요한 컴포넌트만 동적 로딩**하도록 구성되어 있습니다. 참고: [react-notion-x README](https://github.com/NotionX/react-notion-x/blob/master/readme.md)
+이 템플릿은 Notion 렌더링(`react-notion-x`)과 App Router 조합에서 성능을 유지하기 위해 아래 전략을 기본값으로 적용합니다:
+
+- **CSS code-splitting**: Notion/Prism/KaTeX 스타일은 record 라우트에서만 로딩
+- **Render-blocking CSS 완화(프로덕션)**: `experimental.inlineCss`로 CSS 링크 요청을 줄임
+- **애니메이션 CSS 경량화**: `animate.css` → `animate-lite.css` (실사용 키프레임만)
+- **모바일 번들 절감**: 우측 패널(`RightSlidingDrawer`)은 데스크탑에서만 동적 로드
+- **RUM(Web Vitals)**: `useReportWebVitals`로 Core Web Vitals 수집 + baseline 저장/디버깅
+
+참고: `react-notion-x` 권장 패턴(heavy component는 `next/dynamic`으로 지연 로드) — [react-notion-x README](https://github.com/NotionX/react-notion-x/blob/master/readme.md)
 
 ### Lighthouse 측정(무료)
 
-정확한 측정을 위해 **`pnpm dev`가 아니라 프로덕션 빌드(`pnpm build` + `pnpm start`)** 상태에서 실행하세요.
+정확한 측정을 위해 **`pnpm dev`가 아니라 프로덕션 빌드** 상태에서 실행하세요.  
+이 프로젝트는 `output: "standalone"` 이므로 `pnpm start` 대신 아래 방식으로 실행하는 것이 “실서비스 조건”에 가장 가깝습니다.
 
 ```bash
-pnpm build
-pnpm start --port 3000
+pnpm run build
+PORT=3000 node .next/standalone/server.js
 
 # HTML 리포트 생성 (Desktop)
 npx lighthouse http://localhost:3000 \
@@ -102,6 +111,8 @@ npx lighthouse http://localhost:3000 \
   --output=html \
   --output-path=./lighthouse-home.html
 ```
+
+> Trade-off(한줄): `experimental.inlineCss`는 CSS 요청을 줄이는 대신 초기 HTML/RSC payload 크기가 약간 늘 수 있습니다.
 
 ---
 
