@@ -22,7 +22,7 @@ const CORE_BLOG_CONFIG = {
   CONTACT_LINKEDIN: process.env.NEXT_PUBLIC_CONTACT_LINKEDIN || "", //링크드인 링크에요
 
   // Notion
-  NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID, //Notion DB 페이지 ID에요
+  NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID ||"2ea1eb5c033780349f3fc73c9160c4f6", //Notion DB 페이지 ID에요. 자신의 Notion DB 페이지 ID를 입력해주세요.
   NOTION_HOST: process.env.NEXT_PUBLIC_NOTION_HOST || "https://www.notion.so",
   NOTION_PROPERTY_NAME: {
     // type / status value mapping

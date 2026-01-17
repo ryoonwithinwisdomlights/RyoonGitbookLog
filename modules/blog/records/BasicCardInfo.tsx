@@ -31,7 +31,7 @@ const BasicCardInfo = ({
     >
       <div className="flex flex-col items-start text-start">
         <div
-          onClick={(e) => {
+          onClick={() => {
             handleRouter(record);
           }}
           className={`line-clamp-2 flex flex-row  replace cursor-pointer text-2xl ${
