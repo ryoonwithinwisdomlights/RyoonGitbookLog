@@ -60,7 +60,7 @@ const BasicCardInfo = ({
               {record.password !== "" && (
                 <>
                   <LockIcon className="mr-1 w-4 h-4" />
-                  &nbsp;{locale.COMMON.LOCKED}
+                  &nbsp;{locale.LOCKED.LOCKED}
                 </>
               )}
             </span>

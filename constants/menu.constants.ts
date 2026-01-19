@@ -1,24 +1,24 @@
-import { BLOG } from "@/blog.config";
+import { NOTION_PROPERTY_CONFIG } from "@/config/notion.property.config";
 
-export const ARCHIVE_PROPERTIES_TYPE_MAP = {
-  [BLOG.NOTION_PROPERTY_NAME.type_record]: "RECORD",
-  [BLOG.NOTION_PROPERTY_NAME.type_project]: "PROJECT",
-  [BLOG.NOTION_PROPERTY_NAME.type_general]: "ENGINEERING",
-  [BLOG.NOTION_PROPERTY_NAME.type_engineering]: "GENERAL",
-  [BLOG.NOTION_PROPERTY_NAME.type_page]: "Page",
-  [BLOG.NOTION_PROPERTY_NAME.type_notice]: "Notice",
-  [BLOG.NOTION_PROPERTY_NAME.type_menu]: "Menu",
-  [BLOG.NOTION_PROPERTY_NAME.type_sub_menu]: "SubMenu",
-  [BLOG.NOTION_PROPERTY_NAME.type_sub_menu_page]: "SubMenuPage",
+    export const ARCHIVE_PROPERTIES_TYPE_MAP = {
+      [NOTION_PROPERTY_CONFIG.type_record]: "RECORD",
+      [NOTION_PROPERTY_CONFIG.type_project]: "PROJECT",
+      [NOTION_PROPERTY_CONFIG.type_general]: "ENGINEERING",
+  [NOTION_PROPERTY_CONFIG.type_engineering]: "GENERAL",
+  [NOTION_PROPERTY_CONFIG.type_page]: "Page",
+  [NOTION_PROPERTY_CONFIG.type_notice]: "Notice",
+  [NOTION_PROPERTY_CONFIG.type_menu]: "Menu",
+  [NOTION_PROPERTY_CONFIG.type_sub_menu]: "SubMenu",
+  [NOTION_PROPERTY_CONFIG.type_sub_menu_page]: "SubMenuPage",
 };
 export const ARCHIVE_PROPERTIES_STATUS_MAP = {
-  [BLOG.NOTION_PROPERTY_NAME.status_publish]: "Published",
-  [BLOG.NOTION_PROPERTY_NAME.status_invisible]: "Invisible",
+  [NOTION_PROPERTY_CONFIG.status_publish]: "Published",
+  [NOTION_PROPERTY_CONFIG.status_invisible]: "Invisible",
 };
 export const EXCLUDED_PAGE_TYPES = ["Menu", "SubMenu", "Notice"];
 
 export const AVAILABLE_PAGE_TYPES = [
-  ...BLOG.NOTION_PROPERTY_NAME.type_able_arr,
+  ...NOTION_PROPERTY_CONFIG.type_able_arr,
   "Archive",
 ];
 

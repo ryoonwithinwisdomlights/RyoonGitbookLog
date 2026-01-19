@@ -30,19 +30,19 @@ const SingleRecordsIntroForPage = ({ record, siteInfo }) => {
       <section className=" w-full flex-wrap flex flex-row text-sm justify-start items-center text-neutral-500 dark:text-neutral-400 font-light ">
         <span className="whitespace-nowrap flex flex-row items-center">
           <CalendarIcon className="mr-1 w-4 h-4" />
-          {locale.COMMON.record_TIME}: {record?.publishDay}
+          {locale.DOCS.RECORD_TIME}: {record?.publishDay}
         </span>
         <span className="mx-1 ml-2 mr-2"> | </span>
         <span className="whitespace-nowrap mr-2 flex flex-row items-center">
           <FolderClockIcon className="mr-2 w-4 h-4" />
-          {locale.COMMON.LAST_EDITED_TIME}: {record?.lastEditedDay}
+          {locale.DOCS.LAST_EDITED_TIME}: {record?.lastEditedDay}
         </span>
 
         <span className=" flex-row items-center busuanzi_container_page_pv">
           <div className="flex flex-row items-center">
             <TelescopeIcon className="mr-2 font-light whitespace-nowrap w-4 h-4 " />
             <span className="busuanzi_value_page_pv"></span>
-            <span className="ml-1">{locale.COMMON.VIEW}</span>
+            <span className="ml-1">{locale.DOCS.VIEW}</span>
           </div>
         </span>
         <span className="mx-1 ml-2 mr-2"> | </span>

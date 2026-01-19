@@ -158,7 +158,7 @@ Enter key  // 키 입력 처리 함수
         onBlur={() => {
           if (searchInputRef.current && searchInputRef.current.value === "") {
             searchInputRef.current.placeholder =
-              locale.COMMON.ENTER_SEARCH_TERM;
+              locale.SEARCH.ENTER_SEARCH_TERM;
             // 포커스 잃었을 때 비어있으면 placeholder 복구
           }
         }}
@@ -168,7 +168,7 @@ Enter key  // 키 입력 처리 함수
         // }}
         onChange={(e) => updateSearchKey(e.target.value)}
         defaultValue={""}
-        placeholder={locale.COMMON.ENTER_SEARCH_TERM}
+        placeholder={locale.SEARCH.ENTER_SEARCH_TERM}
         autoCapitalize="none"
       />
 

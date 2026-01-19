@@ -1,6 +1,6 @@
 "use client";
 
-import KaTeX from "katex";
+import katex, { ParseError, type KatexOptions } from "katex";
 import React, { useEffect, useState } from "react";
 import type { ElementType, ReactNode } from "react";
 export type KaTeXProps = {
@@ -9,7 +9,7 @@ export type KaTeXProps = {
   block?: boolean;
   errorColor?: string;
   renderError?: (error: Error) => ReactNode;
-  settings?: KaTeX.KatexOptions;
+  settings?: KatexOptions;
   as?: ElementType;
   [key: string]: any; // 추가적인 prop 허용
 };
@@ -43,16 +43,16 @@ const TeX: React.FC<KaTeXProps> = ({
         return;
       }
 
-      const innerHtml = KaTeX.renderToString(content, {
+      const innerHtml = katex.renderToString(content, {
         displayMode: block,
         errorColor,
         throwOnError: !!renderError,
         ...settings,
       });
 
-      setState({ innerHtml: innerHtml });
+      setState({ innerHtml });
     } catch (error) {
-      if (error instanceof KaTeX.ParseError || error instanceof TypeError) {
+      if (error instanceof ParseError || error instanceof TypeError) {
         if (renderError) {
           setState({ innerHtml: "", errorElement: renderError(error) });
         } else {

@@ -1,4 +1,5 @@
 import { BLOG } from "@/blog.config";
+import { NOTION_PROPERTY_CONFIG } from "@/config/notion.property.config";
 import { getGlobalRecordPageData } from "@/lib/notion/serviceImpl";
 import { BaseArchivePageBlock } from "@/types/record.model";
 import type { MetadataRoute } from "next";
@@ -56,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   allPages
     ?.filter(
       (p: BaseArchivePageBlock) =>
-        p.status === BLOG.NOTION_PROPERTY_NAME.status_publish
+        p.status === NOTION_PROPERTY_CONFIG.status_publish
     )
     .forEach((record: BaseArchivePageBlock) => {
       const lastModified = record.lastEditedDate

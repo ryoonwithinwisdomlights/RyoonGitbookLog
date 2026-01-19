@@ -17,13 +17,13 @@ const NavPostListEmpty = ({
     <div className="text-neutral-500 dark:text-neutral-300 flex flex-col w-full items-center justify-center min-h-screen mx-auto md:-mt-20">
       {searchKeyword && (
         <div className="text-lg ">
-          {locale.COMMON.SEARCH_TERM}:&nbsp;{" "}
+          {locale.SEARCH.SEARCH_TERM}:&nbsp;{" "}
           <span className="font-semibold">"{searchKeyword}"</span>
         </div>
       )}
       <div className="pt-4  items-center justify-center text-center">
         {" "}
-        {locale.COMMON.NO_RECORD_FOUND}{" "}
+        {locale.SEARCH.NO_RECORD_FOUND}{" "}
       </div>
     </div>
   );

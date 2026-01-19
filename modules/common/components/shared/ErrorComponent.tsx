@@ -24,7 +24,7 @@ export default function ErrorComponent() {
         className="hidden dark:block"
       />
       <h2 className="text-xl font-medium mb-6">
-        {locale.COMMON.INVALID_RECORD}
+        {locale.ERROR.INVALID_RECORD}
       </h2>
       <Button asChild>
         <Link href={"/"}>{locale.SITE.BACK}</Link>

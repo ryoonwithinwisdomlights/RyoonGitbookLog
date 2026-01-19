@@ -20,6 +20,7 @@ import { getUsers } from "@/lib/notion/api/getUsers";
 import { formatDate } from "@/lib/utils/utils";
 import { BaseArchivePageBlock } from "@/types";
 import { getDateValue, getPageTitle, getTextContent } from "notion-utils";
+import { NOTION_PROPERTY_CONFIG } from "@/config/notion.property.config";
 
 export async function getPageProperties(
   id: string,
@@ -78,7 +79,7 @@ export async function getPageProperties(
   });
 
   // Mapping key: user-defined header name
-  const fieldNames = BLOG.NOTION_PROPERTY_NAME;
+  const fieldNames = NOTION_PROPERTY_CONFIG;
   if (fieldNames) {
     Object.keys(fieldNames).forEach((key) => {
       if (fieldNames[key] && properties[fieldNames[key]]) {
@@ -130,7 +131,7 @@ export async function getPageProperties(
 
   if (id === pageId) {
     const blockMap = await getRecordBlockMapWithRetry({
-      pageId: pageId,
+      pageId,
       retryAttempts: 3,
     });
     properties.blockMap = blockMap;
@@ -202,7 +203,7 @@ export async function getSinglePageProperties(
     }
   });
 
-  const fieldNames = BLOG.NOTION_PROPERTY_NAME;
+  const fieldNames = NOTION_PROPERTY_CONFIG;
   if (fieldNames) {
     Object.keys(fieldNames).forEach((key) => {
       if (fieldNames[key] && properties[fieldNames[key]]) {

@@ -9,7 +9,7 @@ const NoRecordFound = () => {
     items-center justify-center 
     min-h-screen mx-auto my-auto md:text-4xl text-2xl  "
     >
-      {locale.COMMON.NO_RECORD_FOUND}
+      {locale.SEARCH.NO_RECORD_FOUND}
     </div>
   );
 };

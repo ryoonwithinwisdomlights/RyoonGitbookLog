@@ -1,14 +1,14 @@
-import { DOCS_CONFIG } from "@/config/docs.config";
-import { FONT_CONFIG } from "@/config/font.config";
-import { CONTACT_CONFIG } from "@/config/contact.config";
-import { IMAGE_CONFIG } from "@/config/image.config";
-import { ANALYTICS_CONFIG } from "@/config/analytics.config";
-import { DEV_CONFIG } from "@/config/dev.config";
-import { SITE_CONFIG } from "@/config/site.config";
-import { EXTERNAL_CONFIG } from "@/config/external.config";
-import { NOTION_PROPERTY_CONFIG } from "@/config/notion.property.config";
+import { DOCS_CONFIG } from "./config/docs.config";
+import { FONT_CONFIG } from "./config/font.config";
+import { CONTACT_CONFIG } from "./config/contact.config";
+import { IMAGE_CONFIG } from "./config/image.config";
+import { ANALYTICS_CONFIG } from "./config/analytics.config";
+import { DEV_CONFIG } from "./config/dev.config";
+import { SITE_CONFIG } from "./config/site.config";
+import { EXTERNAL_CONFIG } from "./config/external.config";
+import { NOTION_PROPERTY_CONFIG  } from "./config/notion.property.config";
 
-const CORE_BLOG_CONFIG = {
+export const BLOG  = {
   // Basic site metadata
   APP_NAME: "RyoonGitbookLog", // 사이트 이름을 바꿔주세요.
   // i18n / theme
@@ -62,17 +62,5 @@ const CORE_BLOG_CONFIG = {
   ...NOTION_PROPERTY_CONFIG,
 };
 
-/**
- * `BLOG` is intentionally kept as a flat object for backward compatibility.
- * Internally, we keep a "core vs optional features" boundary to make the OSS
- * template easier to reason about and document.
- */
-const OPTIONAL_FEATURE_CONFIG = {
-  // NOTE: This file currently has no additional feature-only keys beyond core.
-  // Keep this object to make future optional features easier to isolate.
-};
 
-export const BLOG = {
-  ...CORE_BLOG_CONFIG,
-  ...OPTIONAL_FEATURE_CONFIG,
-} as const;
+
