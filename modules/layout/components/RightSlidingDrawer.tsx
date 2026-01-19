@@ -6,10 +6,7 @@ import ArchiveInfo from "@/modules/blog/records/ArchiveInfo";
 import TableOfContentsDrawerPC from "@/modules/blog/records/TableOfContentsDrawerPC";
 
 const RightSlidingDrawer = ({ props }) => {
-  let result = props;
-  if (!props) {
-    result = null;
-  }
+
 
   return (
     <div

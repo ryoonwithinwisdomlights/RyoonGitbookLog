@@ -1,5 +1,4 @@
 "use client";
-import LeftNavigationBar from "@/modules/layout/components/LeftNavigationBar";
 import React, { useEffect, useState } from "react";
 
 const MainLayoutWrapper = ({ children }: { children: React.ReactNode }) => {

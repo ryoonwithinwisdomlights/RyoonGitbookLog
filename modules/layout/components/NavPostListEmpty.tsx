@@ -18,7 +18,7 @@ const NavPostListEmpty = memo(function NavPostListEmpty({
       {searchKeyword && (
         <div className="text-lg ">
           {locale.SEARCH.SEARCH_TERM}:&nbsp;{" "}
-          <span className="font-semibold">"{searchKeyword}"</span>
+          <span className="font-semibold">&quot;{searchKeyword}&quot;</span>
         </div>
       )}
       <div className="pt-4  items-center justify-center text-center">
