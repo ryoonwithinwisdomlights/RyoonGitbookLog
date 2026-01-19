@@ -67,6 +67,12 @@
 - **에러 모니터링(Sentry)**: `app/error.tsx`, `app/global-error.tsx`에서 capture (DSN 없으면 자동 비활성)
 - **번들 분석**: `pnpm bundle-report` (`ANALYZE=true`)
 
+### 🛠️ Developer Experience (개발 환경)
+
+- **DebugPanel**: 개발 모드에서 `blog.config.ts` 전체 설정값을 브라우저 사이드 패널로 실시간 확인
+- **VConsoleTs**: 모바일 디버깅 시 화면 중앙 8회 탭으로 [vConsole](https://github.com/niconi/vConsole) 콘솔 로드 (console/network/element 확인)
+- 두 기능 모두 프로덕션 빌드에서는 **자동 비활성화** (`!isProd` 조건)
+
 ---
 
 ## 🤔 왜 이게 좋은가
