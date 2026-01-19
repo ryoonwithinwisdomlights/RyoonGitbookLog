@@ -1,8 +1,14 @@
 "use client";
 import { useMemo } from "react";
+import dynamic from "next/dynamic";
 import { BLOG } from "@/blog.config";
 import { usePathname, useSearchParams } from "next/navigation";
-import ShareButtons from "./ShareButtons";
+
+// Dynamic import - react-share is heavy bundle
+const ShareButtons = dynamic(() => import("./ShareButtons"), {
+  ssr: false,
+  loading: () => <div className="h-8 w-32 animate-pulse bg-neutral-200 rounded" />,
+});
 
 const ShareBar = ({ record }) => {
   const pathname = usePathname();
