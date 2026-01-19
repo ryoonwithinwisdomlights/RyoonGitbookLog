@@ -1,5 +1,5 @@
 "use client";
-import dynamic from "next/dynamic";
+import { ArchiveLock } from "@/modules/blog/records/ArchiveLock";
 import md5 from "js-md5";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -7,12 +7,6 @@ import { useMediaQuery } from "usehooks-ts";
 import SingleRecordsBodyForPage from "./SingleRecordsBodyForPage";
 import SingleRecordsIntroForPage from "./SingleRecordsIntroForPage";
 import { useGlobal } from "@/lib/context/EssentialNavInfoProvider";
-
-// Dynamic import - only loads when article is locked
-const ArchiveLock = dynamic(
-  () => import("@/modules/blog/records/ArchiveLock").then((mod) => mod.ArchiveLock),
-  { ssr: false }
-);
 
 const SingleRecords = ({ props }) => {
   const { page } = props;

@@ -102,36 +102,6 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Static assets caching - immutable for hashed files
-      {
-        source: "/_next/static/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      // Image caching
-      {
-        source: "/images/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=86400, stale-while-revalidate=604800",
-          },
-        ],
-      },
-      // Font caching
-      {
-        source: "/fonts/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
     ];
   },
   webpack: (config, { dev: _dev, isServer }) => {
@@ -188,26 +158,8 @@ const nextConfig: NextConfig = {
     // Trade-off: some duplication in HTML/RSC payload.
     inlineCss: true,
     optimizePackageImports: [
-      // Icons
       "lucide-react",
       "@radix-ui/react-icons",
-      // Radix UI components
-      "@radix-ui/react-dialog",
-      "@radix-ui/react-dropdown-menu",
-      "@radix-ui/react-popover",
-      "@radix-ui/react-alert-dialog",
-      "@radix-ui/react-avatar",
-      "@radix-ui/react-label",
-      "@radix-ui/react-slot",
-      "@radix-ui/react-toggle-group",
-      // Utilities
-      "lodash.throttle",
-      "lodash.debounce",
-      // Third-party
-      "react-share",
-      "motion",
-      "react-notion-x",
-      "notion-utils",
     ],
   },
 };

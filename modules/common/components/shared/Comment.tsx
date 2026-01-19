@@ -1,17 +1,11 @@
 "use client";
-import dynamic from "next/dynamic";
 import { BLOG } from "@/blog.config";
 import { isBrowser } from "@/lib/utils/utils";
 import Tabs from "@/modules/common/ui/Tabs";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import LoadingCover from "../../ui/LoadingCover";
-
-// Dynamic import - loads external giscus script only when visible
-const GiscusComponent = dynamic(() => import("./Giscus"), {
-  ssr: false,
-  loading: () => <LoadingCover />,
-});
+import GiscusComponent from "./Giscus";
 
 /**
  * Comment component
